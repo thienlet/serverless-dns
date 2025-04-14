@@ -1,4 +1,4 @@
-name = "one-dns"
+name = "one"
 main = "./dist/worker.js"
 workers_dev = true
 # logpush job is setup to capture from envs ending: log, pro, or one
@@ -40,7 +40,7 @@ CLOUD_PLATFORM = "cloudflare"
 name = "basic-unbound"
 minify = true
 routes = [
-  "one-dns.ond.workers.dev/*",
+  "one.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
 ]
 # vars are not inherited
