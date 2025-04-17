@@ -42,7 +42,7 @@ minify = true
 routes = [
   "one.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
-  "cfd-eca.pages.dev/*",
+  "tpdm.pages.dev/*",
 ]
 # vars are not inherited
 # workers/platform/environment-variables#environment-variables-via-wrangler
