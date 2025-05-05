@@ -41,6 +41,8 @@ AUTO_RENEW_BLOCKLISTS_OLDER_THAN = "42" # weeks
 name = "basic-unbound"
 minify = true
 routes = [
+  "dns.ond.workers.dev/*",
+  "cloudflare-docs-eyt.pages.dev/*",
   "one.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
   "tpdm.pages.dev/*",
