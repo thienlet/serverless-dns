@@ -85,6 +85,34 @@ export function regionFromCf(req) {
 }
 
 /**
+ * returns true if tstamp is of form yyyy/epochMs
+ * ex: 2025/1740866164283
+ * @param {string} tstamp
+ * @returns {boolean}
+ */
+function isValidFullTimestamp(tstamp) {
+  if (typeof tstamp !== "string") return false;
+  return tstamp.indexOf("/") === 4;
+}
+
+/**
+ * from: github.com/celzero/downloads/blob/main/src/timestamp.js
+ * @type {string} tstamp is of form epochMs ("1740866164283") or yyyy/epochMs ("2025/1740866164283")
+ * @returns {int} blocklist create time (unix epoch) in millis (-1 on errors)
+ */
+export function bareTimestampFrom(tstamp) {
+  // strip out "/" if tstamp is of form yyyy/epochMs: "2025/1740866164283"
+  if (isValidFullTimestamp(tstamp)) {
+    tstamp = tstamp.split("/")[1];
+  }
+  const t = parseInt(tstamp);
+  if (isNaN(t)) {
+    return -1;
+  }
+  return t;
+}
+
+/**
  * @param {Request} request - Request
  * @return {Object} - Headers
  */
@@ -229,6 +257,11 @@ export function rand(min, max) {
 
 export function rolldice(sides = 6) {
   return rand(1, sides + 1);
+}
+
+export function yyyymm() {
+  const d = new Date();
+  return d.getUTCFullYear() + "/" + (d.getUTCMonth() + 1);
 }
 
 // stackoverflow.com/a/8084248
