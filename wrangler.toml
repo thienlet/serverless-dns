@@ -1,4 +1,5 @@
-name = "one"
+name = "# wrangler.toml
+name = "serverless-dns"
 main = "./dist/worker.js"
 workers_dev = true
 # logpush job is setup to capture from envs ending: log, pro, or one
@@ -41,7 +42,7 @@ name = "basic-unbound"
 minify = true
 routes = [
   "cloudflare-docs-eyt.pages.dev/*",
-  "one.ond.workers.dev/*",
+  "serverless-dns.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
 ]
 # vars are not inherited
