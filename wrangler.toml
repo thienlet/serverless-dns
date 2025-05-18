@@ -40,11 +40,9 @@ CLOUD_PLATFORM = "cloudflare"
 name = "basic-unbound"
 minify = true
 routes = [
-  "dns.ond.workers.dev/*",
   "cloudflare-docs-eyt.pages.dev/*",
   "one.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
-  "tpdm.pages.dev/*",
 ]
 # vars are not inherited
 # workers/platform/environment-variables#environment-variables-via-wrangler
@@ -77,6 +75,8 @@ CLOUD_PLATFORM = "cloudflare"
 CF_LOGPUSH_R2_PATH = "qlog/"
 AUTO_RENEW_BLOCKLISTS_OLDER_THAN = "42" # weeks
 
+[placement]     
+mode = "smart"
 ##################
 #-----SECRETS----#
 ##################
