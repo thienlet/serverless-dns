@@ -40,7 +40,6 @@ CLOUD_PLATFORM = "cloudflare"
 name = "basic-unbound"
 minify = true
 routes = [
-  "cloudflare-docs-eyt.pages.dev/*",
   "serverless-dns.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
 ]
