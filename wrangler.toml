@@ -5,7 +5,7 @@ workers_dev = true
 logpush = false
 # use node_compat or custom build
 # node_compat = true
-compatibility_date = "2024-11-09"
+compatibility_date = "2023-03-21"
 send_metrics = false
 minify = false
 upload_source_maps = true
@@ -40,6 +40,11 @@ CLOUD_PLATFORM = "cloudflare"
 name = "basic-unbound"
 minify = true
 routes = [
+  "sky.rethinkdns.com/*",
+  "sky.bravedns.com/*",
+  "basic.rethinkdns.com/*",
+  "basic.bravedns.com/*",
+  "free.bravedns.com/*",
   "serverless-dns.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
 ]
@@ -58,6 +63,8 @@ name = "dns-one"
 logpush = true
 minify = true
 routes = [
+  "serverless-dns.ond.workers.dev/*",
+  "ddns.ond.workers.dev/*",
   "one.rethinkdns.com/*",
   "one.bravedns.com/*",
 ]
