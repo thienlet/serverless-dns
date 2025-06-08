@@ -89,7 +89,3 @@ mode = "smart"
 # CF_API_TOKEN = ""
 # CF_LOGPUSH_R2_SECRET_KEY = ""
 # CF_LOGPUSH_R2_ACCESS_KEY = ""
-
-[[r2_buckets]]
-binding = "VENDORED_MARKDOWN"
-bucket_name = "vendored-markdown"
