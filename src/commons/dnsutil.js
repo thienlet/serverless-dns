@@ -7,9 +7,9 @@
  */
 
 import * as dnslib from "@serverless-dns/dns-parser";
+import * as bufutil from "./bufutil.js";
 import * as envutil from "./envutil.js";
 import * as util from "./util.js";
-import * as bufutil from "./bufutil.js";
 
 // dns packet constants (in bytes)
 // tcp msgs prefixed with 2-octet headers indicating request len in bytes
@@ -61,7 +61,7 @@ export function servfailQ(q) {
   try {
     const p = decode(q);
     return servfail(p.id, p.questions);
-  } catch (e) {
+  } catch (_) {
     return bufutil.ZEROAB;
   }
 }
@@ -220,12 +220,12 @@ export function optAnswer(a) {
   return a.type.toUpperCase() === "OPT";
 }
 
-export function decode(arrayBuffer) {
-  if (!validResponseSize(arrayBuffer)) {
-    throw new Error("failed decoding an invalid dns-packet");
+export function decode(arrbuf) {
+  if (!validResponseSize(arrbuf)) {
+    throw new Error("decoding oversized dns-packet: " + bufutil.len(arrbuf));
   }
 
-  const b = bufutil.bufferOf(arrayBuffer);
+  const b = bufutil.bufferOf(arrbuf);
   return dnslib.decode(b);
 }
 
