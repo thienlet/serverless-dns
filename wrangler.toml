@@ -40,11 +40,6 @@ CLOUD_PLATFORM = "cloudflare"
 name = "basic-unbound"
 minify = true
 routes = [
-  "sky.rethinkdns.com/*",
-  "sky.bravedns.com/*",
-  "basic.rethinkdns.com/*",
-  "basic.bravedns.com/*",
-  "free.bravedns.com/*",
   "serverless-dns.ond.workers.dev/*",
   "ddns.ond.workers.dev/*",
 ]
