@@ -256,5 +256,34 @@ export function isAnswerFresh(m, n = 0) {
 export function updatedAnswer(dnsPacket, qid, expiry) {
   updateQueryId(dnsPacket, qid);
   updateTtl(dnsPacket, expiry);
+  trimAQuadAAnswer(dnsPacket);
   return dnsPacket;
+}
+
+function trimAQuadAAnswer(decodedDnsPacket) {
+  // retain only the first answer, drop the rest
+  if (
+    !dnsutil.hasSingleQuestion(decodedDnsPacket) ||
+    !dnsutil.isQueryAQuadA(decodedDnsPacket) ||
+    !dnsutil.hasAnswers(decodedDnsPacket)
+  ) {
+    return;
+  }
+
+  let dotrim = false;
+  const trimmed = new Array(0);
+  for (const a of decodedDnsPacket.answers) {
+    if (dnsutil.isAnswerCname(a)) {
+      trimmed.push(a);
+    }
+    if (dnsutil.isAnswerA(a) || dnsutil.isAnswerAAAA(a)) {
+      trimmed.push(a);
+      dotrim = true;
+      break;
+    }
+  }
+  if (dotrim) {
+    decodedDnsPacket.answers = trimmed;
+  } // else: nothing to trim, return as-is
+  return;
 }
