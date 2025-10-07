@@ -40,8 +40,8 @@ CLOUD_PLATFORM = "cloudflare"
 name = "basic-unbound"
 minify = true
 routes = [
-  "serverless-dns.onevn.workers.dev/*",
-  "ddns.onevn.workers.dev/*",
+  "serverless-dns.tpbh.workers.dev/*",
+  "ddns.tpbh.workers.dev/*",
 ]
 # vars are not inherited
 # workers/platform/environment-variables#environment-variables-via-wrangler
@@ -58,8 +58,8 @@ name = "dns-one"
 logpush = true
 minify = true
 routes = [
-  "serverless-dns.onevn.workers.dev/*",
-  "ddns.onevn.workers.dev/*",
+  "serverless-dns.tpbh.workers.dev/*",
+  "ddns.tpbh.workers.dev/*",
   "one.rethinkdns.com/*",
   "one.bravedns.com/*",
 ]
